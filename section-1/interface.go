@@ -26,6 +26,12 @@ func (animal Animal) GetName() string {
 	return animal.Name
 }
 
+func Ups() interface{} {
+	return 1
+	return true
+	return "Ups"
+}
+
 func main() {
 	var yusuf Person
 	yusuf.Name = "Yusuf"
@@ -37,4 +43,6 @@ func main() {
 
 	sayHello(cat)
 
+	var ups interface{} = Ups()
+	fmt.Println(ups)
 }
