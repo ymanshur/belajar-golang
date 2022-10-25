@@ -8,6 +8,14 @@ type Customer struct {
 	isMarried     bool
 }
 
+// func sayHello(customer Customer, name string) {
+// 	fmt.Println("Hello", name, "my name is", customer.Name)
+// }
+
+func (customer Customer) sayHello(name string) {
+	fmt.Println("Hello", name, "my name is", customer.Name)
+}
+
 func main() {
 	var yusuf Customer
 	yusuf.Name = "Yusuf"
@@ -18,13 +26,16 @@ func main() {
 	fmt.Println(yusuf.Address)
 	fmt.Println(yusuf.Age)
 
-	var manshur = Customer{
-		Name:    "Manshur",
-		Address: "Sleman",
-		Age:     24,
-	}
-	fmt.Println(manshur)
+	// sayHello(yusuf, "Manshur")
+	yusuf.sayHello("Manshur")
 
-	muhammad := Customer{"Muhammad", "Wates", 23}
-	fmt.Println(muhammad)
+	// var manshur = Customer{
+	// 	Name:    "Manshur",
+	// 	Address: "Sleman",
+	// 	Age:     24,
+	// }
+	// fmt.Println(manshur)
+
+	// muhammad := Customer{"Muhammad", "Wates", 23}
+	// fmt.Println(muhammad)
 }
