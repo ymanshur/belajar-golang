@@ -4,6 +4,12 @@ import "fmt"
 
 func endApp() {
 	fmt.Println("Aplikasi selesai")
+
+	errMessage := recover()
+	if errMessage != nil {
+		fmt.Println("Terjadi error:", errMessage)
+	}
+
 }
 
 func runApp(err bool) {
@@ -18,4 +24,6 @@ func runApp(err bool) {
 
 func main() {
 	runApp(true)
+
+	fmt.Println("Yusuf")
 }
