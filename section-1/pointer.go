@@ -6,6 +6,10 @@ type Address struct {
 	City, Provice, Country string
 }
 
+func ChangeCountryToIndonesia(address *Address) {
+	address.Country = "Malaysia"
+}
+
 func main() {
 	address1 := Address{"Subang", "Jawa Barat", "Indonesia"}
 	// address2 := address1
@@ -16,6 +20,8 @@ func main() {
 
 	// address2 = &Address{"Malang", "Jawa Timur", "Indonesia"}
 	*address2 = Address{"Malang", "Jawa Timur", "Indonesia"}
+
+	ChangeCountryToIndonesia(&address1)
 
 	fmt.Println(address1)
 	fmt.Println(address2)
