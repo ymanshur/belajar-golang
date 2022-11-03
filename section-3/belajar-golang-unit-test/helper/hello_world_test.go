@@ -9,6 +9,29 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func BenchmarkTable(b *testing.B) {
+	benchmarkCases := []struct {
+		name    string
+		request string
+	}{
+		{
+			name:    "Yusuf",
+			request: "Yusuf",
+		},
+		{
+			name:    "MuhammadYusufManshur",
+			request: "Muhammad Yusuf Manshur",
+		},
+	}
+	for _, bC := range benchmarkCases {
+		b.Run(bC.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(bC.request)
+			}
+		})
+	}
+}
+
 func BenchmarkSub(b *testing.B) {
 	b.Run("Yusuf", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
@@ -34,7 +57,7 @@ func BenchmarkHelloWorldManshur(b *testing.B) {
 	}
 }
 
-func TestTableHelloWorld(t *testing.T) {
+func TestTable(t *testing.T) {
 	testCases := []struct {
 		name     string
 		request  string
@@ -64,7 +87,7 @@ func TestTableHelloWorld(t *testing.T) {
 	}
 }
 
-func TestSubTest(t *testing.T) {
+func TestSub(t *testing.T) {
 	t.Run("Yusuf", func(t *testing.T) {
 		result := HelloWorld("Yusuf")
 		require.Equal(t, "Hello Yusuf", result, "Result must be 'Hello Yusuf'")
