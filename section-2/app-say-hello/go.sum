@@ -1,0 +1,6 @@
+github.com/ymanshur/go-say-hello v1.0.0 h1:SwRybA1+qw6gKPHEXEC70ENfeIGcyKGuiU8rLVL/T0k=
+github.com/ymanshur/go-say-hello v1.0.0/go.mod h1:ge2ZmXSHKh3d9ijQM72J/Tw4Lzm3HNzZ14p3dhNkgFk=
+github.com/ymanshur/go-say-hello v1.1.0 h1:4p7VP2U3xnoPzTKgMWVazPW3AkbE6EGFIFtdRK5/0Vk=
+github.com/ymanshur/go-say-hello v1.1.0/go.mod h1:ge2ZmXSHKh3d9ijQM72J/Tw4Lzm3HNzZ14p3dhNkgFk=
+github.com/ymanshur/go-say-hello/v2 v2.0.0 h1:YWNgd78HdJCDc+Kry2z1CHGPT91g9H4Ya1B42abHluw=
+github.com/ymanshur/go-say-hello/v2 v2.0.0/go.mod h1:3ENLBNS9eiDWLtXzq+SUwEVWvj5OVDvAnZqVJPWdFSA=
