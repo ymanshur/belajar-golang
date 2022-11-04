@@ -8,7 +8,11 @@ import (
 )
 
 func TestPool(t *testing.T) {
-	pool := sync.Pool{}
+	pool := sync.Pool{
+		New: func() any {
+			return "New"
+		},
+	}
 
 	pool.Put("Muhammad")
 	pool.Put("Yusuf")
@@ -18,11 +22,11 @@ func TestPool(t *testing.T) {
 		go func() {
 			data := pool.Get()
 			fmt.Println(data)
-			time.Sleep(1 * time.Second)
+			// time.Sleep(1 * time.Second)
 			pool.Put(data)
 		}()
 	}
 
-	time.Sleep(11 * time.Second)
+	time.Sleep(3 * time.Second)
 	fmt.Println("Done")
 }
