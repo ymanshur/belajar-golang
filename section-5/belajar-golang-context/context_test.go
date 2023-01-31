@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"runtime"
 	"testing"
+	"time"
 )
 
 func TestContext(t *testing.T) {
@@ -41,15 +42,21 @@ func TestContextWithValue(t *testing.T) {
 	fmt.Println(contextA.Value("b")) // tidak bisa mengambil data child
 }
 
-func CreateCounter() chan int {
+func CreateCounter(ctx context.Context) chan int {
 	destination := make(chan int)
 
 	go func() {
 		defer close(destination)
 		counter := 1
 		for {
-			destination <- counter
-			counter++
+			select {
+			case <-ctx.Done():
+				return
+			default:
+				destination <- counter
+				counter++
+				// time.Sleep(1 * time.Second) // simulasi slow
+			}
 		}
 	}()
 
@@ -59,7 +66,12 @@ func CreateCounter() chan int {
 func TestContextWithCancel(t *testing.T) {
 	fmt.Println("Total Goroutine", runtime.NumGoroutine()) // 2
 
-	destination := CreateCounter()
+	parent := context.Background()
+	ctx, cancel := context.WithCancel(parent)
+
+	destination := CreateCounter(ctx)
+
+	fmt.Println("Total Goroutine", runtime.NumGoroutine()) // 3
 
 	for n := range destination {
 		fmt.Println("Counter", n)
@@ -68,5 +80,9 @@ func TestContextWithCancel(t *testing.T) {
 		}
 	}
 
-	fmt.Println("Total Goroutine", runtime.NumGoroutine()) // 3 (goroutine leak!)
+	cancel() // mengirim sinyal cancel ke context
+
+	time.Sleep(2 * time.Second) // memastikan goroutine sudah ter-cancel
+
+	fmt.Println("Total Goroutine", runtime.NumGoroutine()) // 2
 }
