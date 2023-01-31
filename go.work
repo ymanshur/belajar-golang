@@ -3,4 +3,5 @@ go 1.19
 use (
 	./section-3/belajar-golang-unit-test
 	./section-4/belajar-golang-goroutine
+	./section-5/belajar-golang-context
 )
