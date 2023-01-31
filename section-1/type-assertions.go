@@ -19,6 +19,6 @@ func main() {
 	case int:
 		fmt.Println("Value", value, "is int")
 	default:
-		fmt.Println("Unkwon type")
+		fmt.Println("Unknown type")
 	}
 }
