@@ -229,7 +229,7 @@ func TestTransaction(t *testing.T) {
 
 	for i := 0; i < 5; i++ {
 		email := "budi" + strconv.Itoa(i+1) + "@gmail.com"
-		comment := "comment budi " + strconv.Itoa(i+1)
+		comment := "comment budi" + strconv.Itoa(i+1)
 
 		result, err := tx.ExecContext(ctx, query, email, comment)
 		if err != nil {
@@ -244,7 +244,7 @@ func TestTransaction(t *testing.T) {
 		fmt.Println("Comment Id ", id)
 	}
 
-	err = tx.Rollback()
+	err = tx.Commit()
 	if err != nil {
 		panic(err)
 	}
