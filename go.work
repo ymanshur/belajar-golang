@@ -5,4 +5,5 @@ use (
 	./section-4/belajar-golang-goroutine
 	./section-5/belajar-golang-context
 	./section-6/belajar-golang-datatabase-mysql
+	./section-7/belajar-golang-embed
 )
