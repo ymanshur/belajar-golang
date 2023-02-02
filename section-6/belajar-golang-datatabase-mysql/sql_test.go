@@ -14,8 +14,8 @@ func TestExecSql(t *testing.T) {
 
 	ctx := context.Background()
 
-	script := "INSERT INTO customer(id, name) VALUES('budi', 'Budi')"
-	_, err := db.ExecContext(ctx, script)
+	query := "INSERT INTO customer(id, name) VALUES('budi', 'Budi')"
+	_, err := db.ExecContext(ctx, query)
 	if err != nil {
 		panic(err)
 	}
@@ -29,8 +29,8 @@ func TestQuerySql(t *testing.T) {
 
 	ctx := context.Background()
 
-	script := "SELECT id, name FROM customer"
-	rows, err := db.QueryContext(ctx, script)
+	query := "SELECT id, name FROM customer"
+	rows, err := db.QueryContext(ctx, query)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +39,7 @@ func TestQuerySql(t *testing.T) {
 	for rows.Next() {
 		var id, name string
 
-		err := rows.Scan(&id, &name) // sesuai urutan kolom di script
+		err := rows.Scan(&id, &name) // sesuai urutan kolom di query
 		if err != nil {
 			panic(err)
 		}
@@ -55,8 +55,8 @@ func TestQuerySqlComplex(t *testing.T) {
 
 	ctx := context.Background()
 
-	script := "SELECT id, name, email, balance, rating, birth_date, married, created_at FROM customer"
-	rows, err := db.QueryContext(ctx, script)
+	query := "SELECT id, name, email, balance, rating, birth_date, married, created_at FROM customer"
+	rows, err := db.QueryContext(ctx, query)
 	if err != nil {
 		panic(err)
 	}
@@ -91,5 +91,34 @@ func TestQuerySqlComplex(t *testing.T) {
 		}
 		fmt.Println("Married?:", married)
 		fmt.Println("Created At:", createdAt)
+	}
+}
+
+func TestSqlInjection(t *testing.T) {
+	db := GetConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+
+	username := "admin'; #"
+	password := "salah"
+
+	query := "SELECT username FROM user WHERE username = '" + username +
+		"' AND password = '" + password + "' LIMIT 1"
+	rows, err := db.QueryContext(ctx, query)
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var username string
+
+		err := rows.Scan(&username)
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("Success login", username)
 	}
 }
