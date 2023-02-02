@@ -9,12 +9,12 @@ Slide: <https://docs.google.com/presentation/d/15pvN3L3HTgA9aIMNkm03PzzIwlff0WDE
 - [Pengenalan Golang Database](#pengenalan-golang-database)
 - [Package Database](#package-database)
 - [Membuat Koneksi Database](#membuat-koneksi-database)
-- Eksekusi Perintah SQL
-- SQL Injection
-- Prepare Statement
-- Auto Increment
-- Database Transaction
-- Repository Pattern
+- [Eksekusi Perintah SQL](#eksekusi-perintah-sql)
+- [SQL Injection](#sql-injection)
+- [Prepare Statement](#prepare-statement)
+- [Auto Increment](#auto-increment)
+- [Database Transaction](#database-transaction)
+- [Repository Pattern](#repository-pattern)
 
 ## Pengenalan Golang Database
 
