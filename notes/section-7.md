@@ -1,17 +1,17 @@
 # Go-Lang Embed
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-embed>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-embed)
 
 Slide: <https://docs.google.com/presentation/d/1d7NZMrQwDvwRYZzqVgQKOAPuw_f7HEcIQdI6Rfvd2G4/edit?usp=sharing>
 
-## Agenda
+## Content
 
-- Pengenalan Embed Package
-- Embed File ke String
-- Embed File ke Byte[]
-- Embed Multiple File
-- Hasil Embed di Compile
-- Dan lain-lain
+- [Pengenalan Embed Package](#pengenalan-embed-package)
+- [Embed File ke String](#embed-file-ke-string)
+- [Embed File ke Byte[]](#embed-file-ke---byte)
+- [Embed Multiple Files](#embed-multiple-files)
+- [Patch Mather](#patch-matcher)
+- [Hasil Embed di Compile](#hasil-embed-di-compile)
 
 ## Pengenalan Embed Package
 

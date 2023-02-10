@@ -1,15 +1,20 @@
 # Go-Lang Unit Test
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-unit-test>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-unit-test)
 
 Slide: <https://docs.google.com/presentation/d/1XxMEaA-JsPHr9BUw2oIOPlEL_psI3EaUFUpuvdlDB_Q/edit?usp=sharing>
 
-## Agenda
+## Content
 
-- Pengenalan Software Testing testing Package
-- Unit Test
-- Assertion
-- Mock, dan Benchmark
+- [Pengenalan Software Testing](#pengenalan-software-testing)
+- [Unit Test](#unit-test)
+- [Assertion](#assertion)
+- [Skip test](#skip-test)
+- [Before and After Test](#before-dan-after-test)
+- [Sub Test](#sub-test)
+- [Table Test](#table-test)
+- [Mock](#mock)
+- [Benchmark](#benchmark)
 
 ## Pengenalan Software Testing
 
@@ -23,7 +28,7 @@ Slide: <https://docs.google.com/presentation/d/1XxMEaA-JsPHr9BUw2oIOPlEL_psI3EaU
 - Unit test biasanya dibuat kecil dan cepat, oleh karena itu biasanya kadang kode unit test lebih banyak dari kode program aslinya, karena semua skenario pengujian akan dicoba di unit test
 - Unit test bisa digunakan sebagai cara untuk meningkatkan kualitas kode program kita
 
-## testing Package
+### testing Package
 
 - Dibahasa pemrograman lain, biasanya untuk implementasi unit test, kita butuh library atau framework khusus untuk unit test
 - Berbeda dengan Go-Lang, di Go-Lang sudah untuk unit test sudah disediakan sebuah packagekhusus bernama testing
@@ -31,28 +36,28 @@ Slide: <https://docs.google.com/presentation/d/1XxMEaA-JsPHr9BUw2oIOPlEL_psI3EaU
 - Hal ini membuat implementasi unit testing di golang sangat mudah dibanding dengan bahasa pemrograman yang lain
 - <https://golang.org/pkg/testing>
 
-### testing.T
+#### testing.T
 
 - Go-Lang menyediakan sebuah struct yang bernama testing.T
 - Struct ini digunakan untuk unit test di Go-Lang
 
-### testing.M
+#### testing.M
 
 - testing.M adalah struct yang disediakan Go-Lang untuk mengatur life cycle testing
 - Materi ini nanti akan kita bahas di chapter Main
 
-### testing.B
+#### testing.B
 
 - testing.B adalah struct yang disediakan Go-Lang untuk melakukan benchmarking
 - Di Go-Lang untuk melakukan benchmark (mengukur kecepatan kode program) pun sudah disediakan, sehingga kita tidak perlu menggunakan library atau framework tambahan
 
-## Aturan File Test
+### Aturan File Test
 
 - Go-Lang memiliki aturan cara membuat file khusus untuk unit test
 - Untuk membuat file unit test, kita harus menggunakan akhiran_test
 - Jadi kita misal kita membuat file hello_world.go, artinya untuk membuat unit testnya, kita harus membuat file hello_world_test.go
 
-## Aturan Function Unit Test
+### Aturan Function Unit Test
 
 - Selain aturan nama file, di Go-Lang juga sudah diatur untuk nama function unit test
 - Nama function untuk unit test harus diawali dengan nama `Test`
@@ -60,26 +65,26 @@ Slide: <https://docs.google.com/presentation/d/1XxMEaA-JsPHr9BUw2oIOPlEL_psI3EaU
 - Tak ada aturan untuk nama belakang function unit test harus sama dengan nama function yang akan di test, yang penting adalah harus diawalin dengan kata Test
 - Selanjutnya harus memiliki parameter (t *testing.T) dan tidak mengembalikan return value
 
-## Menjalankan Unit Test
+### Menjalankan Unit Test
 
 - Untuk menjalankan unit test kita bisa menggunakan perintah : `go test`
 - Jika kita ingin lihat lebih detail function test apa saja yang sudah di running, kita bisa gunakan perintah: `go test -v`
 - Dan jika kita ingin memilih function unit test mana yang ingin di running, kita bisa gunakan perintah: `go test -v -run TestNamaFunction`
 - Jika kita ingin menjalankan semua unit test dari top folder module nya, kita bisa gunakan perintah : `go test ./...`
 
-## Menggagalkan Unit Test
+### Menggagalkan Unit Test
 
 - Menggagalkan unit test menggunakan panic bukanlah hal yang bagus
 - Go-Lang sendiri sudah menyediakan cara untuk menggagalkan unit test menggunakan testing.T
 - Terdapat function Fail(), FailNow(), Error() dan Fatal() jika kita ingin menggagalkan unit test
 
-### t.Fail() dan t.FailNow()
+#### t.Fail() dan t.FailNow()
 
 - Terdapat dua function untuk menggagalkan unit test, yaitu Fail() dan FailNow(). Lantas apa bedanya?
 - Fail() akan menggagalkan unit test, namun tetap melanjutkan eksekusi unit test. Namun diakhir ketika selesai, maka unit test tersebut dianggap gagal
 - FailNow() akan menggagalkan unit test saat ini juga, tanpa melanjutkan eksekusi unit test
 
-### t.Error(args...) dan t.Fatal(args...)
+#### t.Error(args...) dan t.Fatal(args...)
 
 - Selain Fail() dan FailNow(), ada juga Error() dan Fatal()
 - Error() function lebih seperti melakukan log (print) error, namun setelah melakukan log error, dia akan secara otomatis memanggil function Fail(), sehingga mengakibatkan unit test dianggap gagal
@@ -93,7 +98,7 @@ Slide: <https://docs.google.com/presentation/d/1XxMEaA-JsPHr9BUw2oIOPlEL_psI3EaU
 - Oleh karena itu, sangat disarankan untuk menggunakan Assertion untuk melakukan pengecekan
 - Sayangnya, Go-Lang tidak menyediakan package untuk assertion, sehingga kita butuh menambahkan library untuk melakukan assertion ini
 
-## Testify
+### Testify
 
 - Salah satu library assertion yang paling populer di Go-Lang adalah Testify
 - Kita bia menggunakan library ini untuk melakukan assertion terhadap result data di unit test

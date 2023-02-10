@@ -1,8 +1,68 @@
 # Go-Lang Dasar
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-dasar>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-dasar)
 
 Slide: <https://docs.google.com/presentation/d/1QNFV9kjV4TfN-FVFLT6-8Urq2MmadAmgc1puk-YE5Fs/edit?usp=sharing>
+
+## Content
+
+- [Sejarah Go-Lang](#sejarah-go-lang)
+- [Kenapa Belajar Go-Lang](#kenapa-belajar-go-lang)
+- [Tipe Data Number](#tipe-data-number)
+- [Tipe Data String](#tipe-data-string)
+- [Variable](#variable)
+- [Constant](#constant)
+- [Type Declarations](#type-declarations)
+- [Operasi Perbandingan](#operasi-perbandingan)
+- [Tipe Data Array](#tipe-data-array)
+- [Tipe Data Slice](#tipe-data-slice)
+- [Tipe Data Map](#tipe-data-map)
+- [If Expression](#if-expression)
+- [Else Expression](#else-expression)
+- [Switch Expression](#switch-expression)
+- [For](#for)
+- [For Range](#for-range)
+- [Break & Continue](#break--continue)
+- [Function](#function)
+- [Function Parameter](#function-parameter)
+- [Function Return Value](#function-return-value)
+- [Returning Multiple Values](#returning-multiple-values)
+- [Named Return Value](#named-return-values)
+- [Variadic Function](#variadic-function)
+- [Function as Value](#function-as-value)
+- [Function as Parameter](#function-as-parameter)
+- [Anonymous Function](#anonymous-function)
+- [Recursive Function](#recursive-function)
+- [Closure](#closure)
+- [Defer](#defer)
+- [Panic](#panic)
+- [Recover](#recover)
+- [Komentar](#komentar)
+- [Struct](#struct)
+- [Interface](#interface)
+- [Nil](#nil)
+- [Membuat Error](#membuat-error)
+- [Type Assertions](#type-assertions)
+- [Pointer](#pointer)
+- [Function new](#function-new)
+- [Pointer di Method](#pointer-di-method)
+- [Pointer di Function](#pointer-di-function)
+- [GOPATH](#gopath)
+- [Package](#package)
+- [Import](#import)
+- [Access Modifier](#access-modifier)
+- [Package Initialization](#package-initialization)
+- [Blank Identifier](#blank-identifier)
+- [Package os](#package-os)
+- [Package strings](#package-strings)
+- [Package strconv](#package-strconv)
+- [Package math](#package-math)
+- [Package container/list](#package-containerlist)
+- [Package container/ring](#package-containerring)
+- [Package sort](#package-sort)
+- [Package time](#package-time)
+- [Package reflect](#package-reflect)
+- [Package regexp](#package-regexp)
 
 ## Sejarah Go-Lang
 
@@ -199,7 +259,7 @@ datanya
 - Kadang dalam pekerjaan, kita sering menemui kasus dimana menggunakan recursive function lebih mudah dibandingkan tidak menggunakan recursive function
 - Contoh kasus yang lebih mudah diselesaikan menggunakan recursive adalah Factorial
 
-## Closures
+## Closure
 
 - Closure adalah kemampuan sebuah function berinteraksi dengan data-data disekitarnya dalam scope yang sama
 - Harap gunakan fitur closure ini dengan bijak saat kita membuat aplikasi
@@ -423,11 +483,3 @@ Jika kita ingin mengubah seluruh variable yang mengacu ke data tersebut, kita bi
 - Regular expression di Go-Lang menggunakan library C yang dibuat Google bernama RE2
 - <https://github.com/google/re2/wiki/Syntax>
 - <https://golang.ora/pkq/regexp/>
-
-## Materi Selanjutnya?
-
-- Go-Lang Unit Test
-- Go-Lang Modules
-- Go-Lang Concurrency
-- Go-Lang Database
-- Go-Lang Web

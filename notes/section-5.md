@@ -1,17 +1,17 @@
 # Go-Lang Context
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-context>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-context)
 
 Slide: <https://docs.google.com/presentation/d/1WhJvRpKPWq7LY9P6fMN93vkjKa1bJwBQebbieKdefPw/edit?usp=sharing>
 
-## Agenda
+## Content
 
-- Pengenalan Context
-- Membuat Context
-- Context With Value
-- Context With Cancel
-- Context With Timeout
-- Context With Deadline
+- [Pengenalan Context](#pengenalan-context)
+- [Membuat Context](#membuat-context)
+- [Context With Value](#context-with-value)
+- [Context With Cancel](#context-with-cancel)
+- [Context With Timeout](#context-with-timeout)
+- [Context With Deadline](#context-with-deadline)
 
 ## Pengenalan Context
 
@@ -19,14 +19,14 @@ Slide: <https://docs.google.com/presentation/d/1WhJvRpKPWq7LY9P6fMN93vkjKa1bJwBQ
 - Context biasanya dibuat per request (misal setiap ada request masuk ke server web melalui http request)
 - Context digunakan untuk mempermudah kita meneruskan value, dan sinyal antar proses
 
-## Kenapa Context Perlu Dipelajari?
+### Kenapa Context Perlu Dipelajari?
 
 - Context di Golang biasa digunakan untuk mengirim data request atau sinyal ke proses lain
 - Dengan menggunakan context, ketika kita ingin membatalkan semua proses, kita cukup mengirim sinyal ke context, maka secara otomatis semua proses akan dibatalkan
 - Hampir semua bagian di Golang memanfaatkan context, seperti database, http server, http client, dan lain-lain
 - Bahkan di Google sendiri, ketika menggunakan Golang, context wajib digunakan dan selalu dikirim ke setiap function yang dikirim
 
-## Package Context
+### Package Context
 
 - Context direpresentasikan di dalam sebuah interface Context
 - interface Context terdapat dalam package context
@@ -40,19 +40,19 @@ Slide: <https://docs.google.com/presentation/d/1WhJvRpKPWq7LY9P6fMN93vkjKa1bJwBQ
 
 ### Function Membuat Context
 
-| Function | Keterangan |
-| - | - |
+| Function               | Keterangan                                                                                                                                                                                           |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `context.Background()` | Membuat context kosong. Tidak pernah dibatalkan, tidak pernah timeout, dan tidak memiliki value apapun. Biasanya digunakan di main function atau dalam test, atau dalam awal proses request terjadi. |
-| `context.TODO()` | Membuat context kosong seperti Background(), namun biasanya menggunakan ini ketika belum jelas context apa yang ingin digunakan |
+| `context.TODO()`       | Membuat context kosong seperti Background(), namun biasanya menggunakan ini ketika belum jelas context apa yang ingin digunakan                                                                      |
 
-## Parent dan Child Context
+### Parent dan Child Context
 
 - Context menganut konsep parent dan child
 - Artinya, saat kita membuat context, kita bisa membuat child context dari context yang sudah ada
 - Parent context bisa memiliki banyak child, namun child hanya bisa memiliki satu parent context
 - Konsep ini mirip dengan pewarisan di pemrograman berorientasi object
 
-## Hubungan Antara Parent dan Child Context
+### Hubungan Antara Parent dan Child Context
 
 - Parent dan Child context akan selalu terhubung
 - Saat nanti kita melakukan misal pembatalan context A, maka semua child dan sub child dari context A akan ikut dibatalkan
@@ -60,7 +60,7 @@ Slide: <https://docs.google.com/presentation/d/1WhJvRpKPWq7LY9P6fMN93vkjKa1bJwBQ
 - Begitu juga nanti saat kita menyisipkan data ke dalam context A, semua child dan sub child nya bisa mendapatkan data tersebut
 - Namun jika kita menyisipkan data di context B, hanya context B dan semua child dan sub child nya yang mendapat data, parent context B tidak akan mendapat data
 
-## Immutable
+### Immutable
 
 - Context merupakan object yang Immutable, artinya setelah Context dibuat, dia tidak bisa diubah lagi
 - Ketika kita menambahkan value ke dalam context, atau menambahkan pengaturan timeout dan yang lainnya, secara otomatis akan membentuk child context baru, bukan merubah context tersebut
@@ -93,8 +93,3 @@ Slide: <https://docs.google.com/presentation/d/1WhJvRpKPWq7LY9P6fMN93vkjKa1bJwBQ
 - Selain menggunakan timeout untuk melakukan cancel secara otomatis, kita juga bisa menggunakan deadline
 - Pengaturan deadline sedikit berbeda dengan timeout, jika timeout kita beri waktu dari sekarang, kalo deadline ditentukan kapan waktu timeout nya, misal jam 12 siang hari ini
 - Untuk membuat context dengan cancel signal secara otomatis menggunakan deadline, kita bisa menggunakan function `context.WithDeadline(parent, time)`
-
-## Materi Selanjutnya
-
-- Go-Lang Database
-- Go-Lang Web

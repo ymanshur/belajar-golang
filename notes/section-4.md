@@ -1,20 +1,25 @@
 # Go-Lang Goroutines
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-goroutines>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-goroutines)
 
 Slide: <https://docs.google.com/presentation/d/1A78dn_g6HfxfRor9XBUAGPQM9vT6_SnrQGrQ2z0myOo/edit?usp=sharing>
 
-## Agenda
+## Content
 
-- Concurrency & Parallel Programming
-- Goroutines
-- Channel
-- Buffered Channel
-- Mutex
-- WaitGroup
-- Atomic
-- Ticker
-- Dan lain-lain
+- [Concurrency & Parallel Programming](#pengenalan-parallel-programming)
+- [Goroutines](#goroutine)
+- [Channel](#channel)
+- [Buffered Channel](#buffered-channel)
+- [Masalah dengan Goroutine](#masalah-dengan-goroutine)
+- [Mutex](#mutex--mutual-exclusion-)
+- [WaitGroup](#waitgroup)
+- [Once](#once)
+- [Pool](#pool)
+- [Map](#map)
+- [Cond](#cond)
+- [Atomic](#atomic)
+- [Timer](#timer)
+- [GOMAXPROCS](#gomaxprocs)
 
 ## Pengenalan Parallel Programming
 
@@ -30,12 +35,12 @@ Slide: <https://docs.google.com/presentation/d/1A78dn_g6HfxfRor9XBUAGPQM9vT6_Snr
 
 ### Process vs Thread
 
-| Process | Thread |
-| - | - |
-| Process adalah sebuah eksekusi program | Thread adalah segmen dari process |
-| Process mengkonsumsi memory besar | Thread menggunakan memory kecil |
+| Process                                       | Thread                                                      |
+|-----------------------------------------------|-------------------------------------------------------------|
+| Process adalah sebuah eksekusi program        | Thread adalah segmen dari process                           |
+| Process mengkonsumsi memory besar             | Thread menggunakan memory kecil                             |
 | Process saling terisolasi dengan process lain | Thread bisa saling berhubungan jika dalam process yang sama |
-| Process lama untuk dijalankan dihentikan | Thread cepat untuk dijalankan dan dihentikan |
+| Process lama untuk dijalankan dihentikan      | Thread cepat untuk dijalankan dan dihentikan                |
 
 ### Parallel vs Concurrency
 
@@ -60,7 +65,7 @@ Slide: <https://docs.google.com/presentation/d/1A78dn_g6HfxfRor9XBUAGPQM9vT6_Snr
 - Aplikasi jenis I/O-bound, walaupun bisa terbantu dengan implementasi Parallel Programming, tapi benefitnya akan lebih baik jika menggunakan Concurrency Programming.
 - Bayangkan kita membaca data dari database, dan Thread harus menunggu 1 detik untuk mendapat balasan dari database, padahal waktu 1 detik itu jika menggunakan Concurrency Programming, bisa digunakan untuk melakukan hal lain lagi
 
-## Pengenalan Goroutine
+## Goroutine
 
 - Goroutine adalah sebuah *thread ringan* yang dikelola oleh Go Runtime
 - Ukuran Goroutine sangat kecil, sekitar 2kb, jauh lebih kecil dibandingkan Thread yang bisa sampai 1mb atau 1000kb
@@ -80,7 +85,7 @@ Dalam Go-Scheduler, kita akan mengenal beberapa terminologi
 - M: Thread (Machine)
 - P: Processor
 
-## Membuat Goroutine
+### Membuat Goroutine
 
 - Untuk membuat goroutine di Golang sangatlah sederhana
 - Kita hanya cukup menambahkan perintah go sebelum memanggil function yang akan kita jalankan dalam goroutine
@@ -93,7 +98,7 @@ Dalam Go-Scheduler, kita akan mengenal beberapa terminologi
 - Kita bisa membuat ribuan, bahkan sampai jutaan goroutine tanpa takut boros memory
 - Tidak seperti thread yang ukurannya berat, goroutine sangatlah ringan
 
-## Pengenalan Channel
+## Channel
 
 - Channel adalah tempat komunikasi secara synchronous yang bisa dilakukan oleh goroutine
 - Di Channel terdapat pengirim dan penerima, biasanya pengirim dan penerima adalah goroutine yang berbeda
@@ -108,27 +113,27 @@ Dalam Go-Scheduler, kita akan mengenal beberapa terminologi
 - Channel bisa diambil dari lebih dari satu goroutine
 - Channel harus di close jika tidak digunakan, atau bisa menyebabkan memory leak
 
-## Membuat Channel
+### Membuat Channel
 
 - Channel di Go-Lang direpresentasikan dengan tipe data chan
 - Untuk membuat channel sangat mudah, kita bisa menggunakan make(), mirip ketika membuat map
 - Namun saat pembuatan channel, kita harus tentukan tipe data apa yang bisa dimasukkan kedalam channel tersebut
 
-## Mengirim dan Menerima Data dari Channel
+### Mengirim dan Menerima Data dari Channel
 
 - Seperti yarg’Sudah dibahas sebelumnya, channel bisa digunakan untuk mengirim dan menerima data
 - Untuk mengirim data, kita bisa gunakan kode : channel <- data
 - Sedangkan untuk menerima data, bisa gunakan kode : data <- channel
 - Jika selesai, jangan lupa untuk menutup channel menggunakan function close()
 
-## Channel Sebagai Parameter
+### Channel Sebagai Parameter
 
 - Dalam kenyataan pembuatan aplikasi, seringnya kita akan mengirim channel ke function lain via
 parameter
 - Sebelumnya kita tahu bahkan di Go-Lang by default, parameter adalah pass by value, artinya value akan diduplikasi lalu dikirim ke function parameter, sehingga jika kita ingin mengirim data asli, kita biasa gunakan pointer (agar pass by reference).
 - Berbeda dengan Channel, kita tidak perlu melakukan hal tersebut
 
-## Channel In dan Out
+### Channel In dan Out
 
 - Saat kita mengirim channel sebagai parameter, isi function tersebut bisa mengirim dan menerima data dari channel tersebut
 - Kadang kita ingin memberi tahu terhadap function, misal bahwa channel tersebut hanya digunakan untuk mengirim data, atau hanya dapat digunakan untuk menerima data
@@ -148,7 +153,7 @@ parameter
 - Jika kita mengirim data ke 6, maka kita diminta untuk menunggu sampai buffer ada yang kosong
 - Ini cocok sekali ketika memang goroutine yang menerima data lebih lambat dari yang mengirim data
 
-## Range Channel
+### Range Channel
 
 - Kadang-kadang ada kasus sebuah channel dikirim data secara terus menerus oleh pengirim
 - Dan kadang tidak jelas kapan channel tersebut akan berhenti menerima data
@@ -156,7 +161,7 @@ parameter
 - Ketika sebuah channel di close(), maka secara otomatis perulangan tersebut akan berhenti
 - Ini lebih sederhana dari pada kita melakukan pengecekan channel secara manual
 
-## Select Channel
+### Select Channel
 
 - Kadang ada kasus dimana kita membuat beberapa channel, dan menjalankan beberapa goroutine
 - Lalu kita ingin mendapatkan data dari semua channel tersebut
@@ -166,7 +171,7 @@ parameter
 ## Masalah Dengan Goroutine
 
 - Saat kita menggunakan goroutine, dia tidak hanya berjalan secara concurrent, tapi bisa parallel juga, karena bisa ada beberapa thread yang berjalan secara parallel
-- Halini sangat berbahaya ketika kita melakukan manipulasi data variable yang sama oleh beberapa goroutine secara bersamaan
+- Hal ini sangat berbahaya ketika kita melakukan manipulasi data variable yang sama oleh beberapa goroutine secara bersamaan
 - Hal ini bisa menyebabkan masalah yang namanya Race Condition
 
 ## Mutex (Mutual Exclusion)
@@ -194,7 +199,7 @@ proses membaca dan mengubah
 
 ## Once
 
-- Once adalah fitur di Go-Lang yang bisa kita gunakan untuk memastikan bahsa sebuah function di eksekusi hanya sekali
+- Once adalah fitur di Go-Lang yang bisa kita gunakan untuk memastikan bahwa sebuah function di eksekusi hanya sekali
 - Jadi berapa banyak pun goroutine yang mengakses, bisa dipastikan bahwa goroutine yang pertama yang bisa mengeksekusi function nya
 - Goroutine yang lain akan di hiraukan, artinya function tidak akan dieksekusi lagi
 

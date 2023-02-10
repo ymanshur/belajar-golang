@@ -1,10 +1,10 @@
 # Go-Lang Database MySQL
 
-Source code: <https://github.com/ProgrammerZamanNow/belajar-golang-datatabase-mysql>
+[<img src="https://img.shields.io/badge/Github-ProgrammerZamanNow-blue.svg?logo=github">](https://github.com/ProgrammerZamanNow/belajar-golang-datatabase-mysql)
 
 Slide: <https://docs.google.com/presentation/d/15pvN3L3HTgA9aIMNkm03PzzIwlff0WDE6hOWWut9pg8/edit?usp=sharing>
 
-## Agenda
+## Content
 
 - [Pengenalan Golang Database](#pengenalan-golang-database)
 - [Package Database](#package-database)
@@ -53,12 +53,12 @@ Slide: <https://docs.google.com/presentation/d/15pvN3L3HTgA9aIMNkm03PzzIwlff0WDE
 
 ### Pengaturan Database Pooling
 
-| Method | Keterangan |
-| - | - |
-| (DB) SetMaxIdleConns(number) | Pengaturan berapa jumlah koneksi minimal yang dibuat |
-| (DB) SetMaxOpenConns(number) | Pengaturan berapa jumlah koneksi maksimal yang dibuat |
+| Method                            | Keterangan                                                             |
+|-----------------------------------|------------------------------------------------------------------------|
+| (DB) SetMaxIdleConns(number)      | Pengaturan berapa jumlah koneksi minimal yang dibuat                   |
+| (DB) SetMaxOpenConns(number)      | Pengaturan berapa jumlah koneksi maksimal yang dibuat                  |
 | (DB) SetConnMaxIdleTime(duration) | Pengaturan berapa lama koneksi yang sudah tidak digunakan akan dihapus |
-| (DB) SetConnMaxLifetime(duration) | Pengaturan berapa lama koneksi boleh digunakan |
+| (DB) SetConnMaxLifetime(duration) | Pengaturan berapa lama koneksi boleh digunakan                         |
 
 ## Eksekusi Perintah SQL
 
