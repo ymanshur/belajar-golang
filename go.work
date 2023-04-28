@@ -1,9 +1,10 @@
 go 1.19
 
 use (
-	./section-3/belajar-golang-unit-test
-	./section-4/belajar-golang-goroutine
-	./section-5/belajar-golang-context
-	./section-6/belajar-golang-datatabase-mysql
-	./section-7/belajar-golang-embed
+	section-3/belajar-golang-unit-test
+	section-4/belajar-golang-goroutine
+	section-5/belajar-golang-context
+	section-6/belajar-golang-datatabase-mysql
+	section-7/belajar-golang-embed
+	section-13/belajar-golang-logging
 )
