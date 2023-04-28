@@ -8,4 +8,5 @@ use (
 	section-7/belajar-golang-embed
 	section-13/belajar-golang-logging
 	section-14/belajar-golang-generics
+	section-16/belajar-golang-validation
 )
